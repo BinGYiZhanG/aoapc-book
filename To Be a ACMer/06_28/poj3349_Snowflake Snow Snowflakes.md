@@ -1,6 +1,7 @@
 [题目链接](http://poj.org/problem?id=3349)
-
-* 1 Hash做法
+ 
+* 1 Hash做法<br>
+[代码思路](http://poj.org/showmessage?message_id=349869)
 ```cpp
 
 #include <iostream>
@@ -81,7 +82,7 @@ int main(){
 
 
 ```
-[代码思路](http://poj.org/showmessage?message_id=349869)
+
 
 
 
