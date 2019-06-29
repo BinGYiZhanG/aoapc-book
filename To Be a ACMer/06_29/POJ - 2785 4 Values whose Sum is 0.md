@@ -28,11 +28,12 @@ int main(){
             sum1[m++]=A[i]+B[j];
         }
     }
+    long long ans=0;
     sort(sum1,sum1+m);
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             int k=-(C[i]+D[j]);
-            ans+=upper_bound(sum1,sum1+m,k)-upper_bound(sum1,sum1,k);
+            ans+=upper_bound(sum1,sum1+m,k)-lower_bound(sum1,sum1+m,k);
             ///如果等于0，则说明均大于，说明误解
             ///而如果非0，则说明upper_bound找的是第一个大于该元素的位置，而lower_bound找的第一个等于该元素的位置,
             ///由lower_bound可知，存在这个一个k，使得k+A[]+B[]=0
