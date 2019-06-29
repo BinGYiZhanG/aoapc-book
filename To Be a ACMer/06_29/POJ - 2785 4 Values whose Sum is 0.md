@@ -1,4 +1,4 @@
-
+[题目链接](http://poj.org/problem?id=2785)
 ## 本题是关于lower_bound与upper_bound的用法:
 ### lower_bound(begin,end,index):
 #### 在数组中的[begin，end)前闭后开区间内，返回大于或等于index的第一个元素位置，如果都小于index，则返回end。
