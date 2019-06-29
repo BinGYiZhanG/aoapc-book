@@ -1,6 +1,8 @@
 [题目链接](http://poj.org/problem?id=3070)
 
-#### 真的不会做
+题意：计算大数的斐波那契数列
+
+#### 相当于模板题
 构造出满足符合状态转移的基础矩阵
 Github貌似不能贴数学公式，我只能用图片形式了,
 ![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/06271127png.png)
@@ -77,6 +79,6 @@ int main()
 	return 0;
 }
 ```
-
+**参考：**<br>
 [POJ 3070(矩阵快速幂）](https://blog.csdn.net/qq_24489717/article/details/51120679)<br>
 [[POJ3070]Fibonacci sequence——矩阵+快速幂](https://blog.csdn.net/ccf15068475758/article/details/52846726)
