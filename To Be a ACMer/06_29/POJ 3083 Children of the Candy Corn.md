@@ -18,6 +18,8 @@
 
 最后输出S到E的最短步数
 
+![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/06300953.png)
+
 ### 使我加深了对DFS与BFS的用途的理解
 ```cpp
 #include <iostream>
