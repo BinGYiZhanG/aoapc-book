@@ -1,7 +1,8 @@
 [题目链接](http://acm.hdu.edu.cn/showproblem.php?pid=1757)<br>
 思路:
 ![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/06301615.png)
-                                              
+**注：** first矩阵是9,8,7....0，而非9,7,8....0，笔误!
+
 
 ### 本题需要当成模板题来掌握。
 AC代码：
