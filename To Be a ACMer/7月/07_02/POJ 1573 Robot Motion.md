@@ -1,7 +1,9 @@
 [题目链接](http://poj.org/problem?id=1573)
 
+### 简单模拟题
+### 坑：一开始以为如果走路重复的话，要记录走过的方向种类，这完全是无稽之谈，因为如果发生loop情况，肯定包含四个方向,
 
-未完待续
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -21,8 +23,8 @@ struct robot{
 int mov[4][2]={{-1,0},{0,-1},{1,0},{0,1}};
 int asppos[256];
 int dis[12][12];///记录步数
-int dis_type[12][12];///记录该步数下，方向的种类
-set<char> st;///记录该步数下，方向的种类
+//int dis_type[12][12];///记录该步数下，方向的种类
+//set<char> st;///记录该步数下，方向的种类
 void Init(){
     asppos['N']=0;///根据方向，确定要行进的格数
     asppos['W']=1;
@@ -30,8 +32,8 @@ void Init(){
     asppos['E']=3;
     memset(vis,0,sizeof(vis));
     memset(dis,0,sizeof(dis));
-    memset(dis_type,0,sizeof(dis_type));
-    st.clear();
+//    memset(dis_type,0,sizeof(dis_type));
+//    st.clear();
 }
 
 bool islegal(int x,int y){
@@ -47,20 +49,22 @@ void Simulation(){
     while(true){
         cur.x=node.x+mov[asppos[mp[node.x][node.y]]][0];
         cur.y=node.y+mov[asppos[mp[node.x][node.y]]][1];
-        dis[cur.x][cur.y]=dis[node.x][node.y]+1;
-        if(st.find(mp[cur.x][cur.y])==st.end())
-            st.insert(mp[cur.x][cur.y]);
-        dis_type[cur.x][cur.y]=st.size();
-        if(vis[cur.x][cur.y]){///重复
-            printf("%d step(s) before a loop of %d step(s)\n",dis_type[cur.x][cur.y],dis[cur.x][cur.y]);
+
+        if(vis[cur.x][cur.y]==true){///重复
+            int preruns=dis[cur.x][cur.y];
+            dis[cur.x][cur.y]=dis[node.x][node.y]+1;
+            printf("%d step(s) before a loop of %d step(s)\n",preruns,dis[cur.x][cur.y]-preruns);
             break;
         }
+
+        dis[cur.x][cur.y]=dis[node.x][node.y]+1;
         if(islegal(cur.x,cur.y)==false){///如果出界了
             printf("%d step(s) to exit\n",dis[cur.x][cur.y]);
             break;
         }
         node.x=cur.x;
         node.y=cur.y;
+        vis[node.x][node.y]=true;
     }
 }
 
@@ -89,5 +93,4 @@ int main()
     }
     return 0;
 }
-
 ```
