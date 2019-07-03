@@ -7,3 +7,7 @@
 ### 06.30
 [POJ 3126 Prime Path](http://poj.org/problem?id=3126)<br>
 样例过了，但是A不了
+
+### 07.01
+[POJ 2251 Dungeon Master](http://poj.org/problem?id=2251)
+DFS+剪枝  WA ，BFS 队列 TLE
