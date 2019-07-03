@@ -112,6 +112,7 @@ int main(){
 ### 我自己又改了两个WA代码,日了
 [博客地址](https://www.cnblogs.com/lfri/p/9068564.html)
 ### DFS+剪枝
+## Wrong Answer
 ```cpp
 #include<iostream>
 #include<cstdio>
@@ -227,6 +228,7 @@ int main(){
 }
 ```
 ### BFS+优先队列
+## Time Limit Exceeded
 ```cpp
 #include<iostream>
 #include<cstdio>
@@ -271,6 +273,8 @@ bool islegal(int x,int y,int z){
 void BFS(){
     struct node nnode;
     queue<node> q;
+    vis[st.x][st.y][st.z]=true;
+    st.step=0;
     q.push(st);
     while(!q.empty()){
         curp=q.front();
@@ -278,7 +282,7 @@ void BFS(){
         if(success(curp))
             return ;
         else{
-            vis[curp.x][curp.y][curp.z]=true;
+//            vis[curp.x][curp.y][curp.z]=true;
             for(int i=0;i<6;i++){
                 nnode.x=curp.x+mov[i][1];
                 nnode.y=curp.y+mov[i][2];
@@ -291,12 +295,18 @@ void BFS(){
             }
         }
     }
+    return ;
 }
 
+void Init(){
+    memset(vis,false,sizeof(vis));
+
+}
 
 int main(){
     while(scanf("%d%d%d",&L,&R,&C)==3&&(L!=0&&R!=0&&C!=0)){
         getchar();
+        /*
         for(int k=0;k<L;k++){
             for(int i=0;i<R;i++){
                 for(int j=0;j<C;j++){
@@ -317,8 +327,29 @@ int main(){
             if(k!=L-1)
                 getchar();
         }
-
-        memset(vis,false,sizeof(vis));
+        */
+        for(int k=0;k<L;k++){
+            for(int i=0;i<R;i++){
+                scanf("%s",mp[k][i]);
+                for(int j=0;j<C;j++){
+                    //scanf("%c",&mp[k][i][j]);
+                    if(mp[k][i][j]=='S'){
+                        st.x=i;
+                        st.y=j;
+                        st.z=k;
+                    }
+                    if(mp[k][i][j]=='E'){
+                        ed.x=i;
+                        ed.y=j;
+                        ed.z=k;
+                    }
+                }
+                getchar();
+            }
+            if(k!=L-1)
+                getchar();
+        }
+        Init();
         BFS();
         if(success(curp))
             printf("Escaped in %d minute(s).\n",curp.step);
