@@ -99,7 +99,7 @@ int main()
 
 ```
 
-AC代码：
+### AC代码：
 ### 加了一个tmpres<1000，退出的判断，然后A了
 ```cpp
 #include <iostream>
