@@ -1,6 +1,21 @@
 
 ## POJ
 ### 2，初级
+#### 2.1 基本算法
+##### 模拟法
+* POJ 3087 Shuffle'm Up  简单洗牌问题   07.02  看错题了
+* POJ 2632 POJ 2993 没做完<br>
+**还差:**
+* POJ 2996  POJ 1008 
+
+#### 2.2 图算法
+##### 最短路径算法（dijkstra, bellman-ford, floyd, heap+dijkstra）
+* POJ 2253 Frogger 07.02  青蛙跳距离问题（以一个半径的跳） Floyd 算法  只能当成模板题来做了，不会把权值和实际联系  
+
+#### 2.3 数据结构
+##### 高效查找法（数的Hash、串的Hash、二分查找）
+* POJ 3349 Snowflake Snow Snowflakes 寻找是否有一样的雪花，参考别人的代码  06.28
+
 #### 2.4 搜索
 ##### 深度优先搜索DFS
 * POJ 3083 没A DFS 朝向问题     06.29
