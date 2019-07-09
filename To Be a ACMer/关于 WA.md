@@ -11,6 +11,11 @@
 * 还差:
     * POJ 2996  POJ 1008 
 * CUSTOJ 帽爷与学妹的故事之爬楼梯  07.05  不会读入01字符串(还得求长度)，然后转换,
+
+##### 高精度算法
+* POJ 1001 Exponentiation 0710  《算法笔记》模板，没有两个大数相乘，自己能力有限，到现在还没写出来，以下三题均是这种情况
+* POJ 1503 Integer Inquiry  0710
+* POJ 2109 Power of Cryptography   0710 
 #### 2.2 图算法
 
 ##### 最短路径算法（dijkstra, bellman-ford, floyd, heap+dijkstra）
