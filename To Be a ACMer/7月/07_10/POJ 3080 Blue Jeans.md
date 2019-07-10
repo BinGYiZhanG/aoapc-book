@@ -10,6 +10,7 @@
 ### 暴力即可
 
 [借鉴处](https://blog.csdn.net/lyy289065406/article/details/6647262)
+一个一个判断的，但是从len=1的子字符串开始,进行检测
 ```cpp
 #include <iostream>
 #include <cstring>
