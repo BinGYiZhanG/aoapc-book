@@ -7,7 +7,7 @@
 ### 输出
 内部格点数
 
-![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/IMG_20190718_194931.jpg)
+![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/07181956.png)
 
 ```cpp
 第二道 用到pick定理的题目，一直错在一个地方了，后来才发现，
