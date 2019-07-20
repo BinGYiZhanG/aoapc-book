@@ -47,6 +47,8 @@
 ##### 递推关系
 * POJ 1012 Joseph   07.13 本题需要求中间过程，递推式的分母至今不知道如何得出(m-1)
 * POJ 1006 Biorhythms  07.13 中国余数定理，太偏了，多看几遍吧
+* [LA3882](https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1883)
+约瑟夫环数组至今不懂，等回去找找书看看，不能再浪费时间了
 ##### pick定理
 * POJ 2954 Triangle   07.18  pick定理应用，计算边上的点gcd
 
