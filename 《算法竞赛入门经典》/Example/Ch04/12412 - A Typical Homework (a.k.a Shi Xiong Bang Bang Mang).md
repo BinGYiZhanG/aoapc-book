@@ -24,7 +24,7 @@ Welcome to Student Performance Management System (SPMS).
 ```
 Please enter the SID, CID, name and four scores. Enter 0 to finish.
 ```
-然后程序等待用户输入。输入行总是合法的（没有不合法的SID，CID，或者name，确切的四个score等等），但是SIC或许已经存在，在这种情况下，简单地忽视它，并且打印```Duplicated SID.```
+然后程序等待用户输入。输入行总是合法的（没有不合法的SID，CID，或者name，确切的四个score等等），但是SID或许已经存在，在这种情况下，简单地忽视它，并且打印```Duplicated SID.```
 <br>
 另一方面，多个学生拥有同样的姓名。<br>
 您应该一直打印上面的消息，直到用户输入一个0。在那之后再次打印菜单。<br>
@@ -247,5 +247,64 @@ Welcome to Student Performance Management System (SPMS).
 ```
 
 
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
+#include <string>
+#include <set>
+using namespace std;
 
+struct student{
+    string SID,name;
+    int CID;
+    int score[4];
+    bool flag;///记录该人是否被删除,false，代表被删除，或者从未被添加；true，代表没被删除
+}stu[110];
+int stu_cnt=0;///记录总人数
+set<string> SIDset;
+void Init(){
+    for(int i=0;i<110;i++){
+        stu[i].flag=false;
+    }
+}
+
+void ShowMainMenu(){
+    printf("Welcome to Student Performance Management System (SPMS).\n\n");
+    printf("1 - Add\n");
+    printf("2 - Remove\n");
+    printf("3 - Query\n");
+    printf("4 - Show ranking\n");
+    printf("5 - Show Statistics\n");
+    printf("0 - Exit\n");
+}
+
+void Add_a_Student(){
+    string sid;
+    while(cin>>sid&&sid[0]!='0'){///遇到0退出
+        printf("Please enter the SID, CID, name and four scores. Enter 0 to finish.\n");
+        if(SIDset.find(sid)==SIDset.end()){///如果SID没被添加过
+            cin>>stu[stu_cnt].CID>>stu[stu_cnt].name>>stu[stu_cnt].score[0]>>stu[stu_cnt].score[1]>>stu[stu_cnt].score[2]>>stu[stu_cnt].score[3];
+            stu[stu_cnt].SID=sid;
+            stu_cnt++;
+        }
+        else{
+            printf("Duplicated SID.\n");
+        }
+    }
+}
+int main(){
+    Init();
+    int cmd;
+    while(scanf("%d",&cmd)==1&&cmd!=0){
+        ShowMainMenu();
+        if(cmd==1){
+            Add_a_Student();
+        }
+    }
+    return 0;
+}
+
+```
 
