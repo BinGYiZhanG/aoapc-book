@@ -4,7 +4,7 @@
 在SPMS中，至多有100个学生，每个学生都有一个SID，一个CID，一个姓名（name）和四科成绩（Chinese，Mathematics，English andProgramming）
 * SID（学生ID）是一个10位数字
 * CID（班级ID）是一个正数，不超过20
-* 姓名是一个不超过10个字母和数字的字符串，以答谢字母作为开头，姓名不能包含空格
+* 姓名是一个不超过10个字母和数字的字符串，以大写字母作为开头，姓名不能包含空格
 * 每个得分（score）是非负的并且不超过100
 ### 主菜单：
 当你进入SPMS时，主菜单应该像这样被展示：
@@ -254,19 +254,31 @@ Welcome to Student Performance Management System (SPMS).
 #include <cmath>
 #include <string>
 #include <set>
+#include <algorithm>
+
 using namespace std;
 
+const int EPS=1e-5;
 struct student{
     string SID,name;
     int CID;
-    int score[4];
+    int score[5];
+    double avg;///平均分
+    int rank_;///排名
     bool flag;///记录该人是否被删除,false，代表被删除，或者从未被添加；true，代表没被删除
-}stu[110];
+    bool operator = (const )
+}stu[110],tmpstu[110];
 int stu_cnt=0;///记录总人数
 set<string> SIDset;
 void Init(){
     for(int i=0;i<110;i++){
+        stu[i].SID=stu[i].name="";
+        stu[i].CID=-1;
+        stu[i].score[0]=stu[i].score[1]=stu[i].score[2]=stu[i].score[3]=stu[i].score[4]=-1;
+        stu[i].avg=-1;
+        stu[i].rank_=-1;
         stu[i].flag=false;
+
     }
 }
 
@@ -282,29 +294,129 @@ void ShowMainMenu(){
 
 void Add_a_Student(){
     string sid;
-    while(cin>>sid&&sid[0]!='0'){///遇到0退出
+    //while(cin>>sid&&sid[0]!='0'){///遇到0退出
+    for(;;){
         printf("Please enter the SID, CID, name and four scores. Enter 0 to finish.\n");
+        cin>>sid;
+        if(sid=="0")    break;
         if(SIDset.find(sid)==SIDset.end()){///如果SID没被添加过
+            SIDset.insert(sid);
             cin>>stu[stu_cnt].CID>>stu[stu_cnt].name>>stu[stu_cnt].score[0]>>stu[stu_cnt].score[1]>>stu[stu_cnt].score[2]>>stu[stu_cnt].score[3];
+            stu[stu_cnt].score[4]=stu[stu_cnt].score[0]+stu[stu_cnt].score[1]+stu[stu_cnt].score[2]+stu[stu_cnt].score[3];
+            stu[stu_cnt].avg=stu[stu_cnt].score[4]/4.0+EPS;
             stu[stu_cnt].SID=sid;
+            stu[stu_cnt].flag=true;
             stu_cnt++;
         }
         else{
+            string name;
+            int cid,tmpscr[4];///只是为了读入重复数据而已
+            cin>>cid>>name>>tmpscr[0]>>tmpscr[1]>>tmpscr[2]>>tmpscr[3];
             printf("Duplicated SID.\n");
         }
     }
 }
+
+int Search_SID_or_name(string str,int way){///way=1;搜索name；way=0,搜索SID
+    int cnt=0;
+    if(way){
+        for(int i=0;i<stu_cnt;i++){
+            if(stu[i].name==str){
+                stu[i].flag=false;
+                cnt++;
+            }
+        }
+    }
+    else{
+        for(int i=0;i<stu_cnt;i++){
+            if(stu[i].SID==str){
+                stu[i].flag=false;
+                cnt++;
+            }
+        }
+    }
+    return cnt;
+}
+
+void Remove_a_Student(){
+    string str;
+    for(;;){
+        printf("Please enter SID or name. Enter 0 to finish.\n");
+        int cnt=0;
+        cin>>str;
+
+
+        if(str=="0") break;
+        if(isupper(str[0])){///姓名以大写字母开头，所以判断首字母
+            cnt=Search_SID_or_name(str,1);
+        }
+        else{
+            cnt=Search_SID_or_name(str,0);
+        }
+        printf("%d student(s) removed.\n",cnt);
+    }
+}
+
+bool cmp(student a,student b){
+    if(a.flag!=b.flag)   return a.flag>b.flag;
+    else if(a.score[4]!=b.score[4])     return a.score[4]>b.score[4];
+
+}
+
+void Create_Ranklist(){
+    sort(stu,stu+110,cmp);
+    stu[0].rank_=1;
+    for(int i=1;i<stu_cnt;i++){
+        if(stu[i].score[4]==stu[i-1].score[4]){
+            stu[i].rank_=stu[i-1].rank_;
+        }
+        else{
+            stu[i].rank_=i+1;
+        }
+    }
+}
+
+void search_sid_name(string ,int way){
+///way=1,搜索姓名；way=0,搜索sid
+    if(way){
+        for()
+    }
+}
+
+void Show_the_Ranklist(){
+    string str;
+    Create_Ranklist();
+    for(;;){
+        printf("Please enter SID or name. Enter 0 to finish.\n");
+        cin>>str;
+
+        if(str=="0")    break;
+        if(isupper(str[0])){///姓名
+            
+        }
+        else{///SID
+
+        }
+    }
+}
+
 int main(){
     Init();
     int cmd;
-    while(scanf("%d",&cmd)==1&&cmd!=0){
+    ///while(scanf("%d",&cmd)==1&&cmd!=0){
+    for(;;){
         ShowMainMenu();
-        if(cmd==1){
-            Add_a_Student();
-        }
+        scanf("%d",&cmd);
+        if(cmd==0)  break;
+        if(cmd==1)  Add_a_Student();
+        if(cmd==2)  Remove_a_Student();
+        if(cmd==3);
+        if(cmd==4)  printf("Showing the ranklist hurts students’ self-esteem. Don’t do that.\n");
+        if(cmd==5);
     }
     return 0;
 }
+
 
 ```
 
