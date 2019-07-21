@@ -36,8 +36,114 @@
 ```
 
 
+### 我真垃圾，做了几个小时，还是没做出来
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cstring>
 
+using namespace std;
 
+int mp[10][10];
+char line[11];
+bool legal(){
+
+    bool vis[10];
+
+    ///1，判断9个方块
+    for(int g=0;g<7;g+=3)///遍历行
+    for(int k=0;k<7;k+=3){///遍历列
+    memset(vis,false,sizeof(vis));
+    for(int i=1+g;i<=3+g;i++){
+        for(int j=1+k;j<=3+k;j++){
+            if(vis[mp[i][j]]==true&&mp[i][j]!=0)
+                return false;
+            else
+                vis[mp[i][j]]=true;
+        }
+    }
+    }
+
+    ///2，遍历行
+    for(int i=1;i<=9;i++){
+    memset(vis,false,sizeof(vis));
+    for(int j=1;j<=9;j++){
+        if(vis[mp[i][j]]==true&&mp[i][j]!=0)
+            return false;
+        else
+            vis[mp[i][j]]=true;
+    }
+    }
+
+    ///3，遍历列
+    for(int j=1;j<=9;j++){
+    memset(vis,false,sizeof(vis));
+    for(int i=1;i<=9;i++){
+        if(vis[mp[i][j]]==true&&mp[i][j]!=0)
+            return false;
+        else
+            vis[mp[i][j]]=true;
+    }
+    }
+
+    return true;
+}
+
+///定义一个vis数组，设置访问：
+///vis_num[1][1~9]:方块的数字1~9是否访问
+///vis_num[2][1~9]:一行的数字1~9是否访问
+///vis_num[3][1~9]:一列的数字1~9是否访问
+
+bool vis_num[4][10];
+
+int mov[4][2]={{1,0},{0,-1},{-1,0},{0,1}};
+
+bool yuejie(int x,int y){
+    if(mp[x][y]!=0&&x<1&&x>9&&y<1&&y>9)
+        return false;///填充过了，或者越界了，返回false
+    return true;
+}
+
+void DFS(int x,int y){
+    if(legal())return ;///如果填满就返回
+    if(x==9&&y==9)  return ;///访问完了
+    
+    for(int i=0;i<4;i++){
+        int posx=x+mov[i][0];
+        int posy=y+mov[i][1];
+        if(yuejie(posx,posy))   continue;
+        vis[1][]
+    }
+    
+}
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    while(n--){
+        memset(mp,0,sizeof(mp));
+        for(int i=1;i<=9;i++){
+            scanf("%s",line);
+            for(int j=0;j<9;j++){
+                mp[i][j+1]=line[j]-'0';
+            }
+        }
+/*
+        for(int i=1;i<=9;i++){
+            for(int j=1;j<=9;j++){
+                printf("%d",mp[i][j]);
+            }
+            printf("\n");
+        }
+        */
+        
+        
+        printf("%d\n",legal());
+    }
+    return 0;
+}
+```
 
 
 
