@@ -43,6 +43,116 @@ error
 
 
 
+### 两个不懂的地方
+* num==-1
+* n_cnt=i
+
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+#pragma warning(disable: 4996)
+using namespace std;
+
+typedef pair<int,int> P;
+int N,M;
+int len;
+char s[12];
+int pw[]={1,10,100,1000,10000,100000,1000000};
+
+///左闭右开区间,[from,to)
+int get_num(int from,int to){
+    if(from==to)
+        return 0;
+    int t=M;
+    t/=pw[from];
+    t%=pw[to-from];
+    return t;
+}
+
+P Path[12][12];
+int res;
+P res_p;
+bool uni;
+
+///我始终没懂这是如何进行裁剪的，
+///参数说明
+///n_cnt:
+///cur_cnt:
+///cur_to:裁剪终点
+///cur_from:裁剪起点
+///cur_num:记录和
+bool DFS(int n_cnt,int cur_cnt,int cur_to,int cur_from,int cur_num){
+    if(cur_cnt==n_cnt){
+        if(cur_num<=N&&cur_to==len){
+            if(cur_num>res){
+                res=cur_num;
+                uni=true;
+                Path[cur_from][cur_to].first=-1;
+                Path[cur_from][cur_to].second=-1;
+                return true;
+            }else if(cur_num==res){
+                uni=false;
+                return false;
+            }
+        }
+        return false;
+    }
+    if(cur_num>N)
+        return false;
+    bool flag=false;
+    for(int i=cur_to+1;i<=len;i++){
+        int num=get_num(cur_to,i);
+        if(num!=-1){
+            if(DFS(n_cnt,cur_cnt+1,i,cur_to,num+cur_num)){
+                Path[cur_from][cur_to].first=cur_to;
+                Path[cur_from][cur_to].second=i;
+                flag=true;
+            }
+        }
+    }
+    return flag;
+}
+
+
+void print(P p){
+    p=Path[p.first][p.second];
+    if(p.first!=-1&&p.second!=-1){
+        print(p);
+        printf("%d ",get_num(p.first,p.second));
+    }
+}
+
+int main(){
+    while(scanf("%d %s",&N,s)==2){
+        if(N==0&&s[0]=='0')
+            break;
+        len=strlen(s);
+        M=atoi(s);///字符串的整数形式
+        res=-1;
+        uni=false;
+        for(int i=1;i<=len;i++){
+            DFS(i,0,0,0,0);
+        }
+        if(res==-1){
+            printf("error\n");
+            continue;
+        }
+        if(!uni){
+            printf("rejected \n");
+            continue;
+        }
+        printf("%d ",res);
+        print(res_p);
+        printf("\n");
+    }
+}
+
+
+
+```
+
 
 
 
