@@ -37,3 +37,50 @@ No
 Yes
 ```
 
+### 注意：每组数据输入结束之后，存在换行,不然报```Presentation Error```
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <stack>
+using namespace std;
+
+const int maxn=1010;
+int a[maxn];
+
+int main()
+{
+    int N;
+    while(scanf("%d",&N)==1){
+        if(N==0)
+            break;
+        while(scanf("%d",&a[1])){
+            if(a[1]==0){
+                printf("\n");
+                break;
+            }
+            for(int i=2;i<=N;i++)
+                scanf("%d",a+i);
+
+            stack<int> st;
+            int cur=1;
+            for(int i=1;i<=N;i++){
+                st.push(i);
+
+                while(!st.empty()&&st.top()==a[cur]){
+                    cur++;
+                    st.pop();
+                }
+
+            }
+            if(!st.empty())
+                printf("No\n");
+            else
+                printf("Yes\n");
+        }
+    }
+
+    return 0;
+}
+```
+
+
