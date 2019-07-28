@@ -1,3 +1,4 @@
+[POJ 2456 Aggressive cows](http://poj.org/problem?id=2456)
 #### 题面:
 This year is the first year of 5G. All major operators are stepping up construction of 5G.
 Now there is a problem of site selection for base stations.In order to simplify the problem, only one-dimensional situation is considered.
@@ -13,6 +14,8 @@ The second line is the number of 5G base stations should to be built m(m≤n)m(m
 The third line has n positive integer numbers, which are the coordinates of the candidate position. Guaranteed data not more than231−1 2^{31}-1231−1
 #### 输出
 The distance between the two nearest base stations is output.
+* 如果基站数多了，应该少建基站，拉大距离，就是```lf=mid+1```
+* 如果基站数少了，应该多建基站，减小距离，就是```rt=mid-1```
 
 ```cpp
 #include <iostream>
