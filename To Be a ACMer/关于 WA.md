@@ -12,24 +12,28 @@
     * POJ 2996  POJ 1008 
 * CUSTOJ 帽爷与学妹的故事之爬楼梯  07.05  不会读入01字符串(还得求长度)，然后转换,
 
-##### 高精度算法
-* POJ 1001 Exponentiation 0710  《算法笔记》模板，没有两个大数相乘，自己能力有限，到现在还没写出来，以下三题均是这种情况
-* POJ 1503 Integer Inquiry  0710
-* POJ 2109 Power of Cryptography   0710 
+##### 高精度算法（以下全是模板题）
+* POJ 1001 Exponentiation 08_02 《算法笔记》模板，没有两个大数相乘，自己能力有限，到现在还没写出来，以下三题均是这种情况
+* POJ 1503 Integer Inquiry  08_02
+* POJ 2109 Power of Cryptography   08_02
+* POJ 2389 Bull Math 08_02
+* POJ 2602 Superlong sums  08_02 
+* POJ 3982 序列  08_02
+
 #### 2.2 图算法
 
 ##### 最短路径算法（dijkstra, bellman-ford, floyd, heap+dijkstra）
 * Floyd算法
-    * POJ 2253 Frogger 07.02  **十遍打底，模板题！**<br>
+    * POJ 2253 Frogger 07_02  **十遍打底，模板题！**<br>
 青蛙跳距离问题（以一个半径的跳） Floyd 算法  只能当成模板题来做了，不会把权值和实际联系  <br>
 * Bellman-Ford算法
-    * POJ 3259 Wormholes    **十遍打底，模板题！**<br>
+    * POJ 3259 Wormholes  07_05 **十遍打底，模板题！**<br>
     
 #### 2.3 数据结构
 
 ##### 高效查找法（数的Hash、串的Hash、二分查找）
 * POJ 3349 Snowflake Snow Snowflakes <br>
-寻找是否有一样的雪花，参考别人的代码  06.28<br>
+寻找是否有一样的雪花，参考别人的代码  06_28<br>
 
 #### 2.4 搜索
 
