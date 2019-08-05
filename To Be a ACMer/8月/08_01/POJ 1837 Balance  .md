@@ -14,6 +14,42 @@ Gigel有一个奇怪的“天平”并且他想要平衡它。实际上，这个
 ### 输出：
 输出平衡天平的M种可能.
 
+### ```dp[i][j]```数组:在挂满前i个钩码时，平衡度为j的挂法的数量。
+### 初始状态：$dp[0][7500]=0$
+### 状态转移方程：$dp[i][j+w[i]*c[k]]=\sum (dp[i-1][j])$
+### 怎么就平衡了？
+
 ```cpp
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <cstring>
+using namespace std;
+
+int dp[21][15000];
+int W[21];///G个重物的重量
+int D[21];///C个钩子距离天平中央的距离
+int main(){
+    int C,G;
+    scanf("%d%d",&C,&G);
+    for(int i=1;i<=C;i++)
+        cin>>D[i];
+
+    for(int i=1;i<=G;i++)
+        cin>>W[i];
+    memset(dp,0,sizeof(dp));
+    dp[0][7500]=1;
+
+    for(int i=1;i<=G;i++){
+        for(int j=0;j<=15000;j++){
+            if(dp[i-1][j])
+                for(int k=1;k<=C;k++)
+                    dp[i][j+W[i]*D[k]]+=dp[i-1][j];
+        }
+    }
+
+    cout<<dp[G][7500]<<endl;
+    return 0;
+}
 
 ```
