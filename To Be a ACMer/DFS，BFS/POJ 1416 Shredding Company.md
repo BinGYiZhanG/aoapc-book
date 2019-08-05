@@ -1,3 +1,12 @@
+### 深度优先搜索
+### 学习点：
+* 取第i位到第j位的数，利用一个函数
+* 记录路径可以用```pair<int,int> path[210]```
+* DFS打印路径（与上一条相配合）
+* 
+
+
+
 ### 描述
 您刚刚被派去负责为碎纸机公司开发一种新的碎纸机，虽然“普通”碎纸机只是将纸撕碎成小块，使内容变得不可读，但这种新的碎纸机需要具备以下不寻常的基本特征。<br>
 * 1，碎纸机将目标号码和一张写有号码的纸作为输入。
@@ -41,6 +50,31 @@ error
 如果无法进行任何组合，则打印“error”;如果不止一种可能的组合，则打印“rejected”，<br>
 没有额外的字符（包括空格）被允许在每一行的开头，或者每一行的结尾。<br>
 
+### Sample Input
+```
+50 12346
+376 144139
+927438 927438
+18 3312
+9 3142
+25 1299
+111 33333
+103 862150
+6 1104
+0 0
+```
+### Sample Output
+```
+43 1 2 34 6
+283 144 139
+927438 927438
+18 3 3 12
+error
+21 1 2 9 9
+rejected
+103 86 2 15 0
+rejected
+```
 
 
 ### 两个不懂的地方
@@ -52,7 +86,6 @@ error
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
-#pragma warning(disable: 4996)
 using namespace std;
 
 typedef pair<int,int> P;
@@ -62,6 +95,11 @@ char s[12];
 int pw[]={1,10,100,1000,10000,100000,1000000};
 
 ///左闭右开区间,[from,to)
+///左闭右开区间[from,to),
+///23454，数字第一位是第一位，所以答案是34
+///[2,4)
+///pw[2]=100 /pw[2]=234
+///pw[4-2]=100  /pw[2]=34
 int get_num(int from,int to){
     if(from==to)
         return 0;
@@ -83,6 +121,7 @@ bool uni;
 ///cur_to:裁剪终点
 ///cur_from:裁剪起点
 ///cur_num:记录和
+//int step;
 bool DFS(int n_cnt,int cur_cnt,int cur_to,int cur_from,int cur_num){
     if(cur_cnt==n_cnt){
         if(cur_num<=N&&cur_to==len){
@@ -91,6 +130,7 @@ bool DFS(int n_cnt,int cur_cnt,int cur_to,int cur_from,int cur_num){
                 uni=true;
                 Path[cur_from][cur_to].first=-1;
                 Path[cur_from][cur_to].second=-1;
+
                 return true;
             }else if(cur_num==res){
                 uni=false;
@@ -102,12 +142,14 @@ bool DFS(int n_cnt,int cur_cnt,int cur_to,int cur_from,int cur_num){
     if(cur_num>N)
         return false;
     bool flag=false;
+    
     for(int i=cur_to+1;i<=len;i++){
         int num=get_num(cur_to,i);
-        if(num!=-1){
+        if(num>=0){///因为分割的，还有可能是包含一个0的情况
             if(DFS(n_cnt,cur_cnt+1,i,cur_to,num+cur_num)){
                 Path[cur_from][cur_to].first=cur_to;
                 Path[cur_from][cur_to].second=i;
+
                 flag=true;
             }
         }
@@ -132,6 +174,7 @@ int main(){
         M=atoi(s);///字符串的整数形式
         res=-1;
         uni=false;
+        step=0;
         for(int i=1;i<=len;i++){
             DFS(i,0,0,0,0);
         }
@@ -145,6 +188,7 @@ int main(){
         }
         printf("%d ",res);
         print(res_p);
+       // printf("step:%d ",step);
         printf("\n");
     }
 }
