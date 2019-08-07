@@ -39,6 +39,8 @@ S-+-T
 　　####X
 ```
 
+
+[题解](https://blog.csdn.net/wingrez/article/details/85132648)
 ### 不会记录所求方格，这程序也到不了终点
 ```cpp
 #include <iostream>
