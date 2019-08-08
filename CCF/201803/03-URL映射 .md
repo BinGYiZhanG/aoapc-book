@@ -1,3 +1,5 @@
+[题解](https://blog.csdn.net/xbb224007/article/details/79962425)
+原来那个vector题解找不到了..
 ![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/CCF/Images/20180705211647539.png)
 ![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/CCF/Images/20180705211716836.png)
 ![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/CCF/Images/20180705211740856.png)
