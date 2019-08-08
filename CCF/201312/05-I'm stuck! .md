@@ -40,8 +40,12 @@ S-+-T
 ```
 
 
-[题解](https://blog.csdn.net/wingrez/article/details/85132648)
-### 不会记录所求方格，这程序也到不了终点
+[题解：双向DFS](https://blog.csdn.net/wingrez/article/details/85132648)
+
+### 坑：
+* 起始点是“S”，在DFS时如何处理
+* ed的step如何记录，虽然我把ed设为全局变量，但是在DFS中又重新初始化了结点
+
 ```cpp
 #include <iostream>
 #include <cstdio>
@@ -63,17 +67,21 @@ int dy[]={-1,1,0,0};
 
 bool islegal(position node){
     int x=node.x,y=node.y;
-    if(x<0||x>=R||y<0||y>=C||mp[x][y]=='#')
+    if(x<0||x>=R||y<0||y>=C||mp[x][y]=='#'||vis[x][y]==true)
         return false;
     return true;
 }
 
 void DFS(position node){
     int x=node.x,y=node.y;
-    if(islegal(node)==false)    return ;
-    if(x==ed.x&&y==ed.y)    return ;
     vis[x][y]=true;
-    if(mp[x][y]=='+'){///可以朝着四个方向移动
+    printf("x:%d,y:%d,step:%d\n",x,y,node.step);
+    if(mp[x][y]=='T')  {///node型的ed的step变量没更新
+        ed.step=node.step;
+        return ;
+    }
+
+    if(mp[x][y]=='+'||mp[x][y]=='S'||mp[x][y]=='T'){///可以朝着四个方向移动
         for(int i=0;i<4;i++){
             position tmp;
             tmp.x=x+dx[i];
@@ -83,7 +91,7 @@ void DFS(position node){
             DFS(tmp);
         }
     }
-    if(mp[x][y]=='-'){
+    else if(mp[x][y]=='-'){
         for(int i=0;i<2;i++){
             position tmp;
             tmp.x=x+dx[i];
@@ -93,7 +101,7 @@ void DFS(position node){
             DFS(tmp);
         }
     }
-    if(mp[x][y]=='|'){
+    else if(mp[x][y]=='|'){
         for(int i=2;i<4;i++){
             position tmp;
             tmp.x=x+dx[i];
@@ -103,7 +111,7 @@ void DFS(position node){
             DFS(tmp);
         }
     }
-    if(mp[x][y]=='.'){
+    else if(mp[x][y]=='.'){
         for(int i=3;i<4;i++){
             position tmp;
             tmp.x=x+dx[i];
@@ -113,8 +121,10 @@ void DFS(position node){
             DFS(tmp);
         }
     }
-    return ;
+   // return ;
 }
+
+
 
 int main(){
     scanf("%d%d",&R,&C);
@@ -132,19 +142,24 @@ int main(){
             }
         }
     }
+
+    memset(vis,0,sizeof(vis));
     st.step=0;
     ed.step=0;
+  //  printf("%d %d %d %d\n",st.x,st.y,ed.x,ed.y);
     DFS(st);
-    if(ed.step!=0)
-        printf("%d\n",ed.step);
-    else
+   // if(ed.step!=0)
+    if(vis[ed.x][ed.y]==0){
         printf("I'm stuck!\n");
-/*
-    for(int i=0;i<R;i++){
-        printf("%s\n",mp[i]);
+        return 0;
     }
-*/
+
+ //   for(int i=0;i<R;i++){
+  //      printf("%s\n",mp[i]);
+  //  }
+
     return 0;
 }
+
 
 ```
