@@ -1,0 +1,30 @@
+
+```py
+
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        left=n
+        right=n
+        res=[]
+        bracket=""
+        self.digui(res,bracket,left,right)
+        return res
+    
+    def digui(self,res,bracket,left,right):
+        if left>right:
+            return
+        if left>0:
+            self.digui(res,bracket+'(',left-1,right)
+        if right>0:
+            self.digui(res,bracket+')',left,right-1)
+        if right==0 and left==0:
+            res.append(bracket)
+            return
+
+
+```
+
