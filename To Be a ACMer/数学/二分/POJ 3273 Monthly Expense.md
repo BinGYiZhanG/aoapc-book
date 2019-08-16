@@ -12,7 +12,7 @@ Line 1:农场主约翰能够生存的最小可能每月限制
 
 ### 记录
 * 虽然正解有问题，但是```f()```还是学到了，注释掉的是自己写的那部分，明显错误
-
+* ``` while(left<right){```与```left=mid+1```搭配，``` while(left+1<right){```与```left=mid```搭配,若搭配错误，会出现死循环
 ```cpp
 #include <iostream>
 #include <cstdio>
