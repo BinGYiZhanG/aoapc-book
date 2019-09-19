@@ -33,3 +33,14 @@ X.X
 ```
 输出细节：<br>
 Bessie或许会朝第1行开火来摧毁（1,1）和（1,3）的小行星，并且它会朝第2列开火摧毁（2,2）和（3,2）的小行星。<br>
+
+
+
+* [增广路概念](https://baike.baidu.com/item/%E5%A2%9E%E5%B9%BF%E8%B7%AF)
+* [最小点覆盖数等于最大匹配]
+  * [1](https://blog.csdn.net/CY05627/article/details/90609736)
+  * [2](https://www.cnblogs.com/Currier/p/6535787.html)
+* [最小点覆盖，最小边覆盖，最大匹配，最小路径覆盖，最大独立集总结](https://blog.csdn.net/ACMer_ZP/article/details/78570926)
+
+
+* [题解](https://blog.csdn.net/lyy289065406/article/details/6646007)
