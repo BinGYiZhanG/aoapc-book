@@ -1,9 +1,10 @@
 [题目链接](http://poj.org/problem?id=3349)
  
-### 题目大意
+#### 题目大意
 
 * 判断两片雪花是否相同，雪花臂的长度按照顺时针或者逆时针方向给出
 
+#### 思路
 * 1 Hash做法<br>
 [代码思路](http://poj.org/showmessage?message_id=349869)
 ```cpp
