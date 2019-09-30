@@ -23,7 +23,7 @@
 
 
 * 模拟太长,模拟到月份```<month>```和```<day of week>```之后，出现歧义
-
+[题解](https://blog.csdn.net/tigerisland45/article/details/81713845)
 
 ```cpp
 
