@@ -109,7 +109,7 @@ bool isChildCollection(IP&a,IP&b){//判断IP地址b是不是IP地址a的匹配�
     for(int i=0;i<a.length;++i)///在前缀长度范围内,相同
         if(a.ip[i]!=b.ip[i])
             return false;
-    return true;///并且b的前缀长度大于a的，
+    return true;///并且b的前缀长度大于a的，说明b的ip地址在a的ip地址范围之内，因为b的长度大，并且在a的长度范围内又与a相同
 }
 
 ///第一步合并，移除匹配集是前一IP地址子集的IP地址
