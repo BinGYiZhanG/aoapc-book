@@ -6,6 +6,9 @@
 ### 输出：
 输出文件应该包含确切的N个数在一行上代表两个数的和。<br>
 
+#### 思路：
+![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/POJ2602.jpg)
+
 ```cpp
 #include <iostream>
 #include <cstring>
