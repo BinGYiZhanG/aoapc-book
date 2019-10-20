@@ -1,7 +1,6 @@
 ### 思路
-* 模拟大数加法，写成了一个数组
-* 大数加法要倒置（123与123相加，先是3与3加，而后是2与2加）
-* 去掉前导0（和倒置可以放在一个数组里写）
+![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/POJ1503.jpg)
+
 
 ```cpp
 #include <iostream>
