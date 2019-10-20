@@ -1,4 +1,9 @@
-### 大数乘法
+#### 题意：Read in two positive integers (no more than 40 digits each) and compute their product. Output it as a normal number (with no extra leading zeros). 
+
+#### 思路
+![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/POJ2389.jpg)
+
+
 ```cpp
 #include<iostream>
 #include<cstring>
