@@ -1,10 +1,7 @@
 
 
 ### 思路
-* 找到两个乘数的小数点位置
-* 得到去掉小数点之后的大数
-* 模拟大数乘法，将结果转成字符串
-* 分情况，看是否要插入小数
+![](https://github.com/BinGYiZhanG/aoapc-book/blob/master/To%20Be%20a%20ACMer/Images/POJ1001.jpg)
 
 
 ```cpp
