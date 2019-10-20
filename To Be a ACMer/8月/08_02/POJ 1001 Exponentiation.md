@@ -69,10 +69,10 @@ void mult(char* A,char* B,char* ans)
 		for(pa=0;pa<=lena;pa++)  // = 为了处理最后的进位
 		{
 			int temp=a[pa]*b[pb]+w;
-			w=temp/10;
-			temp=(c[pa+pb]+=temp%10);
-			c[lenc=pa+pb]=temp%10;
-			w+=temp/10;
+			w=tmp/10;///高位
+			tmp=(c[pa+pb]+=tmp%10);///tmp表示此pa+pb位（加上先前在此位有的值）
+		        c[lenc=pa+pb]=tmp%10;///此位取个位（进行完加法处理之后，需要再处理一遍进位问题）
+		        w+=tmp/10;///记录此位的进位
 		}
 	}
  
